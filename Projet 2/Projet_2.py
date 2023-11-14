@@ -42,7 +42,7 @@ for k in range(1,N+1):
     #
     dd = Directivity(phi, theta, tm_matrix)
     dB = 10 * np.log10(np.max(dd))
-    print("Directivite max de l'antenne {} = {:.3f} [dB]\n".format(k,dB)) #Arriver à avoir 10db !!
+    print("Directivite max de l'antenne {} = {:.3f} [dB]\n".format(k,dB)) 
     Directivity_tab.append(dB)
 
     theta1 = np.outer(np.concatenate(([0], theta)), np.ones_like(np.concatenate((phi, [2*np.pi]))))
@@ -60,11 +60,10 @@ for k in range(1,N+1):
 
         surf = ax.plot_surface(x, y, z, cmap='plasma')
 
-        #ax.set_box_aspect([4, 3, 2])
-        #ax.view_init(elev=25, azim=-35)   # View from the side
+        ax.view_init(elev=25, azim=-35)    # View from the side
         # ax.view_init(elev=58, azim=-89)   # View from above
         # ax.view_init(elev=55, azim=-73)   # View from above a little to the side
-        ax.view_init(elev=25,azim=-35)
+
         x_min, x_max = np.floor(x.min()), np.ceil(x.max())
         y_min, y_max = np.floor(y.min()), np.ceil(y.max())
         xy_max = max(x_max, y_max, abs(x_min), abs(y_min))
@@ -80,12 +79,6 @@ for k in range(1,N+1):
         plt.title("Pattern {}".format(k))
         plt.savefig("Antenne Projet 2/Plots/Pattern_{}.pdf".format(k))
         plt.show()
-
-    #
-    # TODO =: axis equal !! lobe beau
-    # param => faire un scaling tout en fonction de la longueur d'onde !!
-    # Param : debrief des params => a une certaine freq, elemn va supporter une ode qu ise balade sur struct perio 
-    # 
 
 if plot_D_k:
     fig = plt.figure()

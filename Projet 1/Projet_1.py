@@ -175,10 +175,6 @@ received_power_dBm = 10 * np.log10(received_power_W * 10**3)
 print("############# Q3 #############")
 print("Received Power: %.3f" % (received_power_W*10**(12)), " [pW] or %.3f" % (received_power_dBm), " [dBm]\n")
 
-
-#PS entre pola réellement envoyée mais normalisée + pola de l'antenne réceptrice
-#changement de base avec base orthornormée ! => projection possible alors
-
 plot = False
 if plot :
     # =============================================================================
